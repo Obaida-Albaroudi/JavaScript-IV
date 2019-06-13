@@ -1,62 +1,64 @@
 // CODE here for your Lambda Classes
 
-class Person{
-    constructor(info){
+class Person {
+    constructor(info) {
         this.name = info.name;
         this.age = info.age;
         this.location = info.location;
     }
-    speak(){
-        console.log `Hello my name is ${this.name} I am from ${this.location}`;
+    speak() {
+        console.log(`Hello my name is ${this.name} I am from ${this.location}`);
     }
 }
-  
-class Instructor extends Person{
-    constructor(attributes){
+
+class Instructor extends Person {
+    constructor(attributes) {
         super(attributes);
         this.speciality = attributes.speciality;
         this.favLanguage = attributes.favLanguage;
         this.catchPhrase = attributes.catchPhrase;
     }
-    demo(string){
+    demo(string) {
         console.log(`Today we are learning about ${string}`)
     };
-    grade(student, subject){
-        console.log(`${this.name} receives a perfect score on ${this.subject}`);
+    grade(Student, subject) {
+        console.log(`${Student.name} receives a perfect score on ${subject}`);
     }
 }
-  
-class Student extends Instructor{
-    constructor(attributes){
+
+class Student extends Instructor {
+    constructor(attributes) {
         super(attributes);
         this.previousBackground = attributes.previousBackground;
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
     }
-    listsSubjects(){
-        console.log(this.favSubjects);
+    listsSubjects() {
+        this.favSubjects.forEach(function (element) {
+            console.log(element);
+        }, this)
     }
-    PRAssignment(subject){
-        console.log(`${this,name} has submitted a PR for ${subjec}`);
+    PRAssignment(subject) {
+        console.log(`${this.name} has submitted a PR for ${subject}`);
     }
-    sprintChallenge(subject){
+    sprintChallenge(subject) {
         console.log(`${this.name} has begun sprint challenge on ${subject}`);
     }
 }
-  
-class PM extends Instructor{
-    constructor(extension){
-        super(exetension);
+
+class PM extends Instructor {
+    constructor(extension) {
+        super(extension);
         this.gradClassName = extension.gradClassName;
         this.favInstructor = extension.favInstructor;
     }
-    standUp(slack){
+    standUp(slack) {
         console.log(`${this.name} announces to ${slack}, @channel standy times!`);
     }
-    debugsCode(student, subject){
-        console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
+    debugsCode(Student, subject) {
+        console.log(`${this.name} debugs ${Student.name}'s code on ${subject}`);
     }
-} 
+}
 
 //Instructors
 
@@ -69,7 +71,7 @@ const Dan = new Instructor({
     catchPhrase: "When you start working.."
 });
 
-const Josh = new Instructor({
+const Josh_K = new Instructor({
     name: "Josh",
     age: 38,
     location: "LA",
@@ -87,8 +89,7 @@ const Alissa = new Instructor({
     catchPhrase: "Once you understand the logic behind coding it becomes easy."
 });
 
-console.log(Alissa)
-  
+
 //Students
 
 const Obaida = new Student({
@@ -102,7 +103,6 @@ const Obaida = new Student({
     className: "ICS31A",
     favSubjects: ["Econometrics", "Python", "Machine Learning"]
 });
-console.log(Obaida)
 
 const John = new Student({
     name: "John",
@@ -128,3 +128,51 @@ const Sara = new Student({
     favSubjects: ["Multi-variable Calculus", "Engineering 101A", "C"]
 });
 //Project Managers
+
+const Adetunji = new PM({
+    name: "Adetunji",
+    age: 25,
+    location: "NYC",
+    speciality: "Full-Stack",
+    favLanguage: "JavaScript",
+    catchPhrase: "Did you all do your airtables?",
+    gradClassName: "Advanced JavaScript",
+    favInstructor: "Josh Knell"
+});
+
+const Josh = new PM({
+    name: "Josh",
+    age: 27,
+    location: "Denver",
+    speciality: "Front-End",
+    favLanguage: "CSS",
+    catchPhrase: "@here Today's Guided Project recoding is ready!",
+    gradClassName: "Advanced CSS",
+    favInstructor: "Josh Knell"
+});
+
+const Brandi = new PM({
+    name: "Brandi",
+    age: 24,
+    location: "Miami",
+    speciality: "Back-End",
+    favLanguage: "C++",
+    catchPhrase: "Good morning, WEB21",
+    gradClassName: "Advanced C++",
+    favInstructor: "Josh Knell"
+});
+
+console.log(Dan.age);
+console.log(Obaida.favSubjects);
+console.log(Adetunji.catchPhrase);
+console.log(Josh.favInstructor);
+console.log(Alissa.name);
+console.log(Sara.previousBackground);
+console.log(Obaida.speak());
+console.log(Josh_K.demo("JavaScript"));
+console.log(Dan.grade(John, "CSS"));
+console.log(Obaida.listsSubjects());
+console.log(John.PRAssignment("HTML35"));
+console.log(Obaida.sprintChallenge("JavaScript"));
+console.log(Adetunji.standUp("Web21_adetunji"))
+console.log(Josh.debugsCode(Obaida, "Python"))
