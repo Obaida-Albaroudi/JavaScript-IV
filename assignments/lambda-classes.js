@@ -1,5 +1,7 @@
 // CODE here for your Lambda Classes
 
+
+//Persons Class
 class Person {
     constructor(info) {
         this.name = info.name;
@@ -11,6 +13,7 @@ class Person {
     }
 }
 
+//Instructor Class --> tied to Persons
 class Instructor extends Person {
     constructor(attributes) {
         super(attributes);
@@ -24,14 +27,20 @@ class Instructor extends Person {
     grade(Student, subject) {
         console.log(`${Student.name} receives a perfect score on ${subject}`);
     }
+    finalGrade(Student, subject) {
+        console.log(`${Student.name}'s grade in ${subject} is:`, Student.grading - Math.random())
+    }
+
 }
 
+//Student Class --> tied to Instructors --> Persons
 class Student extends Instructor {
     constructor(attributes) {
         super(attributes);
         this.previousBackground = attributes.previousBackground;
         this.className = attributes.className;
         this.favSubjects = attributes.favSubjects;
+        this.grading = attributes.grading;
     }
     listsSubjects() {
         this.favSubjects.forEach(function (element) {
@@ -46,6 +55,7 @@ class Student extends Instructor {
     }
 }
 
+//Project Manager Class --> tie to Instructors --> Persons
 class PM extends Instructor {
     constructor(extension) {
         super(extension);
@@ -58,9 +68,12 @@ class PM extends Instructor {
     debugsCode(Student, subject) {
         console.log(`${this.name} debugs ${Student.name}'s code on ${subject}`);
     }
+    finalGrade(Student, subject) {
+        console.log(`${Student.name}'s grade in ${subject} is:`, Student.grading - Math.random())
+    }
 }
 
-//Instructors
+//Instructors Objects
 
 const Dan = new Instructor({
     name: "Dan",
@@ -90,7 +103,7 @@ const Alissa = new Instructor({
 });
 
 
-//Students
+//Students Objects
 
 const Obaida = new Student({
     name: "Obaida",
@@ -101,7 +114,8 @@ const Obaida = new Student({
     catchPhrase: "You live and learn.",
     previousBackground: "Studied Economics",
     className: "ICS31A",
-    favSubjects: ["Econometrics", "Python", "Machine Learning"]
+    favSubjects: ["Econometrics", "Python", "Machine Learning"],
+    grading: 100
 });
 
 const John = new Student({
@@ -113,7 +127,8 @@ const John = new Student({
     catchPhrase: "We gotta make that bread.",
     previousBackground: "Pre-Med",
     className: "Bio234",
-    favSubjects: ["Organic Chemistry", "Biology", "JavaScript"]
+    favSubjects: ["Organic Chemistry", "Biology", "JavaScript"],
+    grading: 90
 });
 
 const Sara = new Student({
@@ -125,9 +140,10 @@ const Sara = new Student({
     catchPhrase: "To live is to travel.",
     previousBackground: "Studied Civil Engineering",
     className: "Structures 32A",
-    favSubjects: ["Multi-variable Calculus", "Engineering 101A", "C"]
+    favSubjects: ["Multi-variable Calculus", "Engineering 101A", "C"],
+    grading: 95
 });
-//Project Managers
+//Project Managers Objects
 
 const Adetunji = new PM({
     name: "Adetunji",
@@ -162,6 +178,7 @@ const Brandi = new PM({
     favInstructor: "Josh Knell"
 });
 
+//Test cases to make sure everything is working.
 console.log(Dan.age);
 console.log(Obaida.favSubjects);
 console.log(Adetunji.catchPhrase);
@@ -176,3 +193,5 @@ console.log(John.PRAssignment("HTML35"));
 console.log(Obaida.sprintChallenge("JavaScript"));
 console.log(Adetunji.standUp("Web21_adetunji"))
 console.log(Josh.debugsCode(Obaida, "Python"))
+console.log(Dan.finalGrade(Obaida, "Advanced Python"))
+console.log(Adetunji.finalGrade(John, "Advanced JavaScript"))
