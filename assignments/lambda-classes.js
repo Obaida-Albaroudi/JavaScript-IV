@@ -57,3 +57,74 @@ class PM extends Instructor{
         console.log(`${this.name} debugs ${student.name}'s code on ${subject}`);
     }
 } 
+
+//Instructors
+
+const Dan = new Instructor({
+    name: "Dan",
+    age: 28,
+    location: "SF",
+    speciality: "Back-End",
+    favLanguage: "JavaScript",
+    catchPhrase: "When you start working.."
+});
+
+const Josh = new Instructor({
+    name: "Josh",
+    age: 38,
+    location: "LA",
+    speciality: "Front-End",
+    favLanguage: "CSS",
+    catchPhrase: "It is all about imagining the design."
+});
+
+const Alissa = new Instructor({
+    name: "Alissa",
+    age: 32,
+    location: "San Diego",
+    speciality: "Full-Stack",
+    favLanguage: "Python",
+    catchPhrase: "Once you understand the logic behind coding it becomes easy."
+});
+
+console.log(Alissa)
+  
+//Students
+
+const Obaida = new Student({
+    name: "Obaida",
+    age: 22,
+    location: "OC",
+    speciality: "N/A",
+    favLanguage: "Python",
+    catchPhrase: "You live and learn.",
+    previousBackground: "Studied Economics",
+    className: "ICS31A",
+    favSubjects: ["Econometrics", "Python", "Machine Learning"]
+});
+console.log(Obaida)
+
+const John = new Student({
+    name: "John",
+    age: 25,
+    location: "SLC",
+    speciality: "Full-Stack",
+    favLanguage: "Java",
+    catchPhrase: "We gotta make that bread.",
+    previousBackground: "Pre-Med",
+    className: "Bio234",
+    favSubjects: ["Organic Chemistry", "Biology", "JavaScript"]
+});
+
+const Sara = new Student({
+    name: "Sara",
+    age: 27,
+    location: "DC",
+    speciality: "Full-Stack",
+    favLanguage: "C",
+    catchPhrase: "To live is to travel.",
+    previousBackground: "Studied Civil Engineering",
+    className: "Structures 32A",
+    favSubjects: ["Multi-variable Calculus", "Engineering 101A", "C"]
+});
+//Project Managers
